@@ -78,32 +78,31 @@ h1{
     background-color: rgb(177, 100, 248);
 }
 
-.botaoContainer{
-    padding-top: 1rem;
+#resultado{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1REM;
 }
 
-#botaoJogar{
-    cursor: pointer;
-    font-size: 1.2rem;
-    width: 100px;
-    height: 35px;
+.moviComputador{
     text-transform: uppercase;
     font-weight: 900;
-    border: none;
-    background-color: rgb(255, 123, 0);
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease all;
 }
 
-#botaoJogar:hover{
-    transform: scale(1.1);
+#vitoria{
+    color: rgb(45, 163, 15);
+    font-weight: 900;
 }
 
-#botaoJogar:active{
-    transform: scale(80%);
+#perda{
+    color: rgb(223, 70, 10);
+    font-weight: 900;
+}
+
+#empate{
+     color: rgb(10, 74, 212);
+    font-weight: 900;
+
 }
