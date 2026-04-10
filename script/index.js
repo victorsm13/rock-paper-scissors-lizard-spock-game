@@ -26,14 +26,15 @@ function movimentoComputador(){
     return movimento;
 }
 
-
-jsPedra.addEventListener('click', ()=>{
+function jogo(movimentoJogador){
 
     let resultado = '';
 
     const movimento = movimentoComputador()
 
-    if(movimento === 'pedra'){
+    if(movimentoJogador === 'pedra'){
+
+         if(movimento === 'pedra'){
 
         empates++;
         resultado = ` <p>Deu empate! O computador escolheu <span class='moviComputador'>pedra</span></p>
@@ -55,15 +56,10 @@ jsPedra.addEventListener('click', ()=>{
     }
 
     jsResultado.innerHTML = resultado;
-});
 
-jsPapel.addEventListener('click', ()=>{
+    } else if(movimentoJogador === 'papel'){
 
-    let resultado = '';
-
-    const movimento = movimentoComputador()
-
-    if(movimento === 'pedra'){
+        if(movimento === 'pedra'){
 
         vitorias++;
         resultado = ` <p>Você ganhou! O computador escolheu <span class='moviComputador'>pedra</span></p>
@@ -85,14 +81,9 @@ jsPapel.addEventListener('click', ()=>{
     }
 
     jsResultado.innerHTML = resultado;
-});
 
-jsTesoura.addEventListener('click', ()=>{
-    let resultado = '';
-
-    const movimento = movimentoComputador()
-
-    if(movimento === 'pedra'){
+    } else{
+        if(movimento === 'pedra'){
 
         perdas++;
         resultado = ` <p>Você perdeu! O computador escolheu <span class='moviComputador'>pedra</span></p>
@@ -114,4 +105,21 @@ jsTesoura.addEventListener('click', ()=>{
     }
 
     jsResultado.innerHTML = resultado;
+
+    }
+
+}
+
+
+jsPedra.addEventListener('click', ()=>{
+    jogo('pedra');
 });
+
+jsPapel.addEventListener('click', ()=>{
+    jogo('papel');
+});
+
+jsTesoura.addEventListener('click', ()=>{
+    jogo('tesoura');
+});
+
