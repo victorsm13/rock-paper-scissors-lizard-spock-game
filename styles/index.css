@@ -1,112 +1,170 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: "Roboto", sans-serif;
 }
 
 body{
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(0, 0, 0);
+}
+
+img{
+    width: 180px;
 }
 
 .wrapper{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.jogo{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5rem;
-    background-color: #fff;
-    width: 600px;
-    height: 400px;
+    align-items: center;
+    margin: 2rem 0 1rem 0rem;
+}
+
+.gameContainer{
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    width: 1000px;
+    padding: 1rem;
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(97, 97, 97, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 h1{
-    text-align: center;
-    text-transform: uppercase;
-    padding-bottom: 2rem;
+    color: #ffffff;
+    font-family: "Archivo Black", sans-serif;
+    margin-bottom: 3rem;
 }
 
-.jogoContainer{
-    padding-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 2rem;
-    gap: 2rem;
-}
 
-.opcao{
+.subtitle, h2{
     cursor: pointer;
-    font-size: 4rem;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    border-radius: 50%;
-    border: 1px solid black;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+}
+
+.subtitle::before, h2::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: #fff;
+    top: 100%;
+    border-radius: 5px;
     transition: 0.3s ease all;
 }
 
-.opcao:hover{
-    transform: scale(90%);
-    opacity: 0.7;
+.subtitle:hover:before, h2:hover::before{
+    width: 50%;
 }
 
-.opcao:active{
-    transform: scale(1.1);
+.gameBox{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, 150px);
+    gap: 1.5rem;
+    justify-content: center;
+    align-content: center;
 }
 
-#pedra{
-    background-color: rgb(235, 76, 76);
-}
-
-#papel{
-    background-color: rgb(72, 97, 236);
-}
-
-#tesoura{
-    background-color: rgb(177, 100, 248);
-}
-
-#resultado{
+.option{
+    cursor: pointer;
+    font-size: 5rem;
     display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(97, 97, 97, 0.5);
+    padding: 1rem;
+    border-radius: 50%;
+    height: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease all;
+}
+
+.option:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+}
+
+.option:active{
+    transform: scale(90%);
+}
+
+.scoreContainer{
+    display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1REM;
+    gap: 2rem;
+    font-family: "Raleway", sans-serif;
+    color: rgb(148, 148, 148);
 }
 
-.moviComputador{
+.scoreBoardBox{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 250px 100px 250px;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.userScoreBoard, .computerScoreBoard, .tiesBox{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.userText, .computerText{
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 900;
 }
 
-#vitoria{
-    color: rgb(45, 163, 15);
-    font-weight: 900;
+.winsBox, .losesBox{
+    font-weight: 700;
 }
 
-#perda{
-    color: rgb(223, 70, 10);
-    font-weight: 900;
+.wins{
+    color: rgb(0, 253, 0);
 }
 
-#empate{
-     color: rgb(10, 74, 212);
-    font-weight: 900;
+.loses{
+    color: rgb(255, 0, 0);
+}
 
+.tiesText{
+    color: #fff;
+    font-weight: 900;
+    font-size: 5rem;
+}
+
+.tiesBox span{
+    font-weight: 700;
+}
+
+.ties{
+    color: yellow;
+}
+
+.scoreBox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }

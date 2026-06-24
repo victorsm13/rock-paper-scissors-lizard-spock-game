@@ -3,24 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedra, papel e tesoura</title>
+    <title>Game: R.P.S.L.S. </title>
     <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
 
     <div class="wrapper">
+        <h1>Game: Rock, Paper, Scissors, Lizard & Spock</h1>
 
-        <div class="jogo">
-             <h1>pedra, papel & tesoura</h1>
+        <div class="gameContainer">
+            <h2 class="subtitle">Click to play</h2>
 
-              <div class="jogoContainer">
-                 <p class="opcao jsPedra" id="pedra">👊</p>
-                 <p class="opcao jsPapel" id="papel">✋</p>
-                 <p class="opcao jsTesoura" id="tesoura">✌️</p>
+              <div class="gameBox">
+                 <div class="option jsRock" id="rock"> 🗿</div>
+                 <div class="option jsPaper" id="paper"> 📝</div>
+                 <div class="option jsScissors" id="scissors">✂️</div>
+                 <div class="option jsLizard" id="lizard"> 🦎</div>
+                 <div class="option jsSpock" id="spock"> 🖖</div>
               </div>
 
-           <div id="resultado" class="jsResultado">
-           </div>
+              <div class="scoreContainer">
+                <div class="scoreTitle">
+                    <h2>Score board</h2>
+                </div>
+                <div class="scoreBoardBox">
+                    <div class="userScoreBoard">
+                    <div><span class="userText">user</span></div>
+                    <div><img src="./assets/alien.png" alt=""></div>
+                    <div class="scoreBox">
+                        <div class="winsBox">Wins: <span class="wins jsUserWins">0</span></div>
+                        <div class="losesBox">Loses: <span class="loses jsUserLoses">0</span></div>
+                    </div>
+                </div>
+                <div class="tiesBox">
+                    <p class="tiesText">X</p>
+                    <span>Ties: <span class="ties jsTies">0</span></span>
+                </div>
+                <div class="computerScoreBoard">
+                    <div><span class="computerText">computer</span></div>
+                    <div><img src="./assets/robot.png" alt=""></div>
+                    <div class="scoreBox">
+                        <div class="winsBox">Wins: <span class="wins jsComputerWins">0</span></div>
+                        <div class="losesBox">Loses: <span class="loses jsComputerLoses">0</span></div>
+                    </div>
+                </div>
+                </div>
+                
+              </div>
         </div>
     </div>
     
