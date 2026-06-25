@@ -1,8 +1,8 @@
-# Rock, Paper, Scissors, Lizard & Spock
+# 🎮 Rock, Paper, Scissors, Lizard & Spock
 
 A web-based version of the classic **Rock, Paper, Scissors** game inspired by **The Big Bang Theory** featuring two additional choices: Lizard and Spock.
 
-## About the Project
+## 📖 About the Project
 
 This project allows the player to compete against the computer by choosing one of five possible moves. The computer generates a random move, and the game determines the winner according to the official rules of Rock, Paper, Scissors, Lizard & Spock.
 
@@ -10,7 +10,7 @@ The scoreboard is automatically saved using the browser's **Local Storage**, all
 
 ---
 
-## Technologies Used
+## 🚀 Technologies Used
 
 * HTML5
 * CSS3
@@ -19,7 +19,7 @@ The scoreboard is automatically saved using the browser's **Local Storage**, all
 
 ---
 
-## Features
+## 🛠️ Features
 
 * Five playable options:
 
@@ -44,14 +44,14 @@ The scoreboard is automatically saved using the browser's **Local Storage**, all
 * Reset button to start a new game.
 
 
-## The Process
+## 📍 The Process
 
 I've been asking myself what the first project I should upload here, and what could be better than a Rock, Paper, Scissors game with even more options?
 
 I wanted to practice everything I've learned over the past few months, including DOM manipulation, event handling, arrays, objects, functions, data persistence, and responsive design. This project turned out to be the perfect opportunity to do that.
 
 ---
-## Preview/Demo
+## 🎬 Preview/Demo
 
 ![Project Demo](./assets/demo.gif)
 
