@@ -60,6 +60,7 @@ h1{
     top: 100%;
     border-radius: 5px;
     transition: 0.3s ease all;
+
 }
 
 .subtitle:hover:before, h2:hover::before{
@@ -163,8 +164,59 @@ h1{
     color: yellow;
 }
 
+.resetBttn{
+    cursor: pointer;
+    border: none;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: grey;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.3s ease all;
+}
+
+.resetBttn:hover{
+    background-color: #fff;
+    color: grey;
+}
+
+.resetBttn:active{
+    transform: scale(90%);
+}
+
 .scoreBox {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+.resultContainer{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.resultBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    width: 400px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgba(126, 125, 125, 0.9);
+    font-weight: 900;
+    color: #fff;
+}
+
+.hiden{
+    display: none;
 }

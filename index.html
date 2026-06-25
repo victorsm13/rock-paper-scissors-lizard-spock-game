@@ -8,14 +8,21 @@
 </head>
 <body>
 
+    <div class="resultContainer jsResultContainer hiden">
+        <div class="resultBox jsResultBox">
+            <p class="result jsResult"></p>
+            <p class="moves jsMoves"></p>
+        </div>
+    </div>
+
     <div class="wrapper">
         <h1>Game: Rock, Paper, Scissors, Lizard & Spock</h1>
 
         <div class="gameContainer">
-            <h2 class="subtitle">Click to play</h2>
+            <h2 class="subtitle">Click the icon below to play</h2>
 
               <div class="gameBox">
-                 <div class="option jsRock" id="rock"> 🗿</div>
+                 <div title="rockdvwdvw" class="option jsRock" id="rock"> 🗿</div>
                  <div class="option jsPaper" id="paper"> 📝</div>
                  <div class="option jsScissors" id="scissors">✂️</div>
                  <div class="option jsLizard" id="lizard"> 🦎</div>
@@ -38,6 +45,7 @@
                 <div class="tiesBox">
                     <p class="tiesText">X</p>
                     <span>Ties: <span class="ties jsTies">0</span></span>
+                    <button class="resetBttn jsResetBttn">reset game</button>
                 </div>
                 <div class="computerScoreBoard">
                     <div><span class="computerText">computer</span></div>
