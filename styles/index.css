@@ -37,7 +37,7 @@ img{
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-h1{
+#title{
     color: #ffffff;
     font-family: "Archivo Black", sans-serif;
     margin-bottom: 3rem;
@@ -138,7 +138,7 @@ h1{
     font-weight: 900;
 }
 
-.winsBox, .losesBox{
+.winsBox, .lossesBox{
     font-weight: 700;
 }
 
@@ -146,7 +146,7 @@ h1{
     color: rgb(0, 253, 0);
 }
 
-.loses{
+.losses{
     color: rgb(255, 0, 0);
 }
 
@@ -217,6 +217,274 @@ h1{
     color: #fff;
 }
 
-.hiden{
+.hidden{
     display: none;
+}
+
+@media (max-width: 1025px){
+
+    .gameContainer{
+       width: 800px;
+    }
+
+    .gameBox{
+    grid-template-columns: repeat(auto-fit, 125px);
+    }
+
+    .option{
+        height: 125px;
+        font-size: 4rem;
+    }
+
+    img{
+        width: 160px;
+    }
+
+}
+
+@media (max-width: 815px){
+
+    #title{
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .gameContainer{
+       width: 700px;
+       gap: 3rem;
+    }
+
+    .gameBox{
+    grid-template-columns: repeat(auto-fit, 100px);
+    
+    }
+
+    .option{
+        height: 100px;
+    }
+
+    img{
+        width: 140px;
+    }
+
+}
+
+@media (max-width: 710px){
+
+     #title{
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .subtitle, h2{
+    font-size: 1.2rem;
+    }
+
+
+    .gameContainer{
+       width: 600px;
+       gap: 2rem;;
+    }
+
+    .gameBox{
+        grid-template-columns: repeat(auto-fit, 85px);  
+    }
+
+    .option{
+        height: 85px;
+        font-size: 3rem;
+    }
+
+    img{
+        width: 120px;
+    }
+
+
+    .tiesBox span{
+        font-size: 0.8rem;
+    }
+
+    .scoreContainer{
+        gap: 1.5rem;
+    }
+
+}
+
+@media (max-width: 610px){
+
+    .subtitle, h2{
+       font-size: 1rem;
+    }
+
+    .gameContainer{
+       width: 500px;
+    }
+
+    .gameBox{
+      grid-template-columns: repeat(auto-fit, 70px);
+    }
+
+    .option{
+        height: 70px;
+        font-size: 2.5rem;
+    }
+
+    img{
+        width: 100px;
+    }
+
+    .scoreBoardBox{
+        grid-template-columns: 200px 100px 200px;
+        gap: 1rem;
+    }
+
+    .scoreContainer{
+        gap: 1rem;
+    }
+
+}
+
+@media (max-width: 510px){
+
+    #title{
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .subtitle, h2{
+    font-size: 0.9rem;
+    }   
+
+    .gameContainer{
+       width: 400px;
+    }
+
+    .gameBox{
+    grid-template-columns: repeat(auto-fit, 50px);
+    }
+
+    .option{
+        height: 50px;
+        font-size: 2rem;
+    }
+
+    img{
+        width: 80px;
+    }
+
+    .scoreBoardBox{
+        grid-template-columns: 150px 80px 150px;
+        gap: 1rem;
+    }
+
+    .scoreBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .userScoreBoard, .computerScoreBoard, .tiesBox{
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .userText, .computerText{
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .winsBox, .lossesBox{
+        font-size: 0.9rem;
+        font-weight: 500;
+    }  
+
+    .tiesText{
+        color: #fff;
+        font-weight: 900;
+        font-size: 3rem;
+    }
+
+    .resetBttn{
+        width: 80px;
+        height: 20px;
+        font-size: 0.6rem;
+    }
+
+    .scoreContainer{
+        gap: 0.8rem;
+    }
+
+}
+
+@media (max-width: 420px){
+     #title{
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .gameContainer{
+       width: 370px;
+    }
+
+    .gameBox{
+    grid-template-columns: repeat(auto-fit, 40px);
+    }
+
+    .option{
+        height: 40px;
+        font-size: 1.8rem;
+    }
+
+    img{
+        width: 65px;
+    }
+
+    .scoreBoardBox{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 100px 80px 100px;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scoreBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.2rem;
+    }
+
+    .userScoreBoard, .computerScoreBoard, .tiesBox{
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .userText, .computerText{
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .winsBox, .lossesBox{
+        font-size: 0.5rem;
+        font-weight: 500;
+    }
+
+    .tiesText{
+        color: #fff;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+
+    .resetBttn{
+        width: 70px;
+        height: 20px;
+        font-size: 0.6rem;
+    }
+
+    .scoreContainer{
+        gap: 0.5rem;
+
+    }
 }

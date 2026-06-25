@@ -1,8 +1,4 @@
-renderPage();
-
-function renderPage(){
-
-    const jsRock = document.querySelector('.jsRock');
+const jsRock = document.querySelector('.jsRock');
 const jsPaper = document.querySelector('.jsPaper');
 const jsScissors = document.querySelector('.jsScissors');
 const jsLizard = document.querySelector('.jsLizard');
@@ -11,21 +7,21 @@ const jsResetBttn = document.querySelector('.jsResetBttn');
 
 const jsTies = document.querySelector('.jsTies');
 const jsUserWins = document.querySelector ('.jsUserWins');
-const jsUserLoses = document.querySelector ('.jsUserLoses');
+const jsUserLosses = document.querySelector ('.jsUserLosses');
 const jsComputerWins = document.querySelector ('.jsComputerWins');
-const jsComputerLoses = document.querySelector ('.jsComputerLoses');
+const jsComputerLosses = document.querySelector ('.jsComputerLosses');
 
 
 let gameScore = JSON.parse(localStorage.getItem('gameScore')) || [
     {
-        name: 'user',
+        player: 'user',
         wins: 0,
-        loses: 0
+        losses: 0
     },
     {
-        computer: 'user',
+        player: 'computer',
         wins: 0,
-        loses: 0
+        losses: 0
     },
     {
         ties: 0
@@ -34,9 +30,9 @@ let gameScore = JSON.parse(localStorage.getItem('gameScore')) || [
 
 jsTies.innerText = gameScore[2].ties;
 jsUserWins.innerText = gameScore[0].wins;
-jsUserLoses.innerText = gameScore[0].loses;
+jsUserLosses.innerText = gameScore[0].losses;
 jsComputerWins.innerText = gameScore[1].wins;
-jsComputerLoses.innerText = gameScore[1].loses;
+jsComputerLosses.innerText = gameScore[1].losses;
 
 function saveToStorage(){
     localStorage.setItem('gameScore', JSON.stringify(gameScore));
@@ -64,14 +60,14 @@ function computerMove(){
 function renderGameScore(userResult, computerResult){
    
 
-    if(userResult === 'userWins' && computerResult === 'computerLoses'){
+    if(userResult === 'userWins' && computerResult === 'computerLosses'){
 
         jsUserWins.innerText = gameScore[0].wins;
-        jsComputerLoses.innerText = gameScore[1].loses;
+        jsComputerLosses.innerText = gameScore[1].losses;
 
-    } else if (userResult === 'userLoses' && computerResult === 'computerWins'){
+    } else if (userResult === 'userLosses' && computerResult === 'computerWins'){
 
-        jsUserLoses.innerText = gameScore[0].loses;
+        jsUserLosses.innerText = gameScore[0].losses;
         jsComputerWins.innerText = gameScore[1].wins;
          
     } else {
@@ -92,32 +88,32 @@ function renderResultOnPage(result, userMove, computerMove){
     if(result === 'userWins'){
 
         jsResult.innerText = 'User wins 🏆'
-        jsMoves.innerText = `User chose ${moves[userMove]} 🆚 Computer chose ${moves[computerMove]}`;
+        jsMoves.innerText = `User chose ${moves[userMove]} - 🆚 - Computer chose ${moves[computerMove]}`;
 
         setTimeout(()=>{
-            jsResultContainer.classList.add('hiden')
+            jsResultContainer.classList.add('hidden')
         }, 2000);
 
-        jsResultContainer.classList.remove('hiden');
+        jsResultContainer.classList.remove('hidden');
 
     } else if (result === 'computerWins') {
         jsResult.innerText = 'Computer wins 🏆'
-        jsMoves.innerText = `User chose ${moves[userMove]} 🆚 Computer chose ${moves[computerMove]}`;
+        jsMoves.innerText = `User chose ${moves[userMove]} - 🆚 - Computer chose ${moves[computerMove]}`;
 
         setTimeout(()=>{
-            jsResultContainer.classList.add('hiden')
+            jsResultContainer.classList.add('hidden')
         }, 2000);
 
-        jsResultContainer.classList.remove('hiden');
+        jsResultContainer.classList.remove('hidden');
     } else if (result === 'tie'){
         jsResult.innerText = `It's a tie 🏆`
-        jsMoves.innerText = `User chose ${moves[userMove]} 🆚 Computer chose ${moves[computerMove]}`;
+        jsMoves.innerText = `User chose ${moves[userMove]} - 🆚 - Computer chose ${moves[computerMove]}`;
 
         setTimeout(()=>{
-            jsResultContainer.classList.add('hiden')
+            jsResultContainer.classList.add('hidden')
         }, 2000);
 
-        jsResultContainer.classList.remove('hiden');
+        jsResultContainer.classList.remove('hidden');
     }
 }
 
@@ -127,163 +123,163 @@ function game(userMove, computerMove){
     if(userMove === 'rock'){
 
         if(computerMove === 'rock'){
-            gameScore[2].ties += 1;
+            gameScore[2].ties ++;
             renderResultOnPage('tie', 0, 0);
             renderGameScore()
             saveToStorage();
         } else if(computerMove === 'paper'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 0, 1);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'scissors'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 0, 2);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'lizard') {
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 0, 3);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'spock'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
              renderResultOnPage('computerWins', 0, 4);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } 
         
     } else if(userMove === 'paper'){
 
         if(computerMove === 'rock'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 1, 0);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if(computerMove === 'paper'){
-            gameScore[2].ties += 1;
+            gameScore[2].ties++;
             renderResultOnPage('tie', 1, 1);
             renderGameScore();
             saveToStorage();
         } else if (computerMove === 'scissors') {
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 1, 2);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'lizard'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 1, 3);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'spock'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 1, 4);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         }
 
     } else if (userMove === 'scissors'){
 
         if(computerMove === 'rock'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 2, 0);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if(computerMove === 'paper'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 2, 1);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'scissors') {
-            gameScore[2].ties += 1;
+            gameScore[2].ties++;
             renderResultOnPage('tie', 2, 2);
             renderGameScore();
             saveToStorage();
         } else if (computerMove === 'lizard'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 2, 3);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'spock'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 2, 4);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         }
 
     } else if (userMove === 'lizard'){
 
         if(computerMove === 'rock'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 3, 0);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if(computerMove === 'paper'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 3, 1);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'scissors') {
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 3, 2);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'lizard'){
-            gameScore[2].ties += 1;
+            gameScore[2].ties++;
             renderResultOnPage('tie', 3, 3);
             renderGameScore();
             saveToStorage();
         } else if (computerMove === 'spock'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 3, 4);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         }
 
     } else if (userMove === 'spock'){
 
         if(computerMove === 'rock'){
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 4, 0);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if(computerMove === 'paper'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 4, 1);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'scissors') {
-            gameScore[0].wins += 1;
-            gameScore[1].loses += 1;
+            gameScore[0].wins++;
+            gameScore[1].losses++;
             renderResultOnPage('userWins', 4, 2);
-            renderGameScore('userWins', 'computerLoses');
+            renderGameScore('userWins', 'computerLosses');
             saveToStorage();
         } else if (computerMove === 'lizard'){
-            gameScore[0].loses += 1;
-            gameScore[1].wins += 1;
+            gameScore[0].losses++;
+            gameScore[1].wins++;
             renderResultOnPage('computerWins', 4, 3);
-            renderGameScore('userLoses', 'computerWins');
+            renderGameScore('userLosses', 'computerWins');
             saveToStorage();
         } else if (computerMove === 'spock'){
-            gameScore[2].ties += 1;
+            gameScore[2].ties++;
             renderResultOnPage('tie', 4, 4);
             renderGameScore();
             saveToStorage();
@@ -294,24 +290,8 @@ function game(userMove, computerMove){
 
 function resetGame(){
 
-    gameScore = [
-          {
-        name: 'user',
-        wins: 0,
-        loses: 0
-    },
-    {
-        computer: 'user',
-        wins: 0,
-        loses: 0
-    },
-    {
-        ties: 0
-    }
-    ];
-
-    saveToStorage();
-    renderPage();
+    localStorage.removeItem('gameScore');
+    window.location.href = '../index.html';
 
 };
 
@@ -349,8 +329,6 @@ jsSpock.addEventListener('click', ()=>{
 
     game(userMove, actualComputerMove);
 });
-
-}
 
 
 

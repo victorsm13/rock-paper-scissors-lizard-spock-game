@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="resultContainer jsResultContainer hiden">
+    <div class="resultContainer jsResultContainer hidden">
         <div class="resultBox jsResultBox">
             <p class="result jsResult"></p>
             <p class="moves jsMoves"></p>
@@ -16,17 +16,17 @@
     </div>
 
     <div class="wrapper">
-        <h1>Game: Rock, Paper, Scissors, Lizard & Spock</h1>
+        <h1 id="title">Game: Rock, Paper, Scissors, Lizard & Spock</h1>
 
         <div class="gameContainer">
             <h2 class="subtitle">Click the icon below to play</h2>
 
               <div class="gameBox">
-                 <div title="rockdvwdvw" class="option jsRock" id="rock"> 🗿</div>
-                 <div class="option jsPaper" id="paper"> 📝</div>
-                 <div class="option jsScissors" id="scissors">✂️</div>
-                 <div class="option jsLizard" id="lizard"> 🦎</div>
-                 <div class="option jsSpock" id="spock"> 🖖</div>
+                 <div title="rock" class="option jsRock" id="rock"> 🗿</div>
+                 <div title="paper" class="option jsPaper" id="paper"> 📝</div>
+                 <div title="scissors" class="option jsScissors" id="scissors">✂️</div>
+                 <div title="lizard" class="option jsLizard" id="lizard"> 🦎</div>
+                 <div title="spock" class="option jsSpock" id="spock"> 🖖</div>
               </div>
 
               <div class="scoreContainer">
@@ -39,7 +39,7 @@
                     <div><img src="./assets/alien.png" alt=""></div>
                     <div class="scoreBox">
                         <div class="winsBox">Wins: <span class="wins jsUserWins">0</span></div>
-                        <div class="losesBox">Loses: <span class="loses jsUserLoses">0</span></div>
+                        <div class="lossesBox">Losses: <span class="losses jsUserLosses">0</span></div>
                     </div>
                 </div>
                 <div class="tiesBox">
@@ -52,7 +52,7 @@
                     <div><img src="./assets/robot.png" alt=""></div>
                     <div class="scoreBox">
                         <div class="winsBox">Wins: <span class="wins jsComputerWins">0</span></div>
-                        <div class="losesBox">Loses: <span class="loses jsComputerLoses">0</span></div>
+                        <div class="lossesBox">Losses: <span class="losses jsComputerLosses">0</span></div>
                     </div>
                 </div>
                 </div>
