@@ -1,125 +1,256 @@
-const jsPedra = document.querySelector('.jsPedra');
-const jsPapel = document.querySelector('.jsPapel');
-const jsTesoura = document.querySelector('.jsTesoura');
+const jsRock = document.querySelector('.jsRock');
+const jsPaper = document.querySelector('.jsPaper');
+const jsScissors = document.querySelector('.jsScissors');
+const jsLizard = document.querySelector('.jsLizard');
+const jsSpock = document.querySelector('.jsSpock');
 
-let jsResultado = document.querySelector('.jsResultado');
+const jsTies = document.querySelector('.jsTies');
+const jsUserWins = document.querySelector ('.jsUserWins');
+const jsUserLoses = document.querySelector ('.jsUserLoses');
+const jsComputerWins = document.querySelector ('.jsComputerWins');
+const jsComputerLoses = document.querySelector ('.jsComputerLoses');
 
-let vitorias = 0;
-let perdas = 0;
-let empates = 0;
 
-
-function movimentoComputador(){
-
-    let movimento;
-
-    const numero = Math.floor(Math.random() * 3 + 1);
-    
-    if(numero == 1){
-        movimento = 'pedra';
-    } else if (numero == 2){
-        movimento = 'papel';
-    } else{
-        movimento = 'tesoura';
+const gameScore = JSON.parse(localStorage.getItem('gameScore')) || [
+    {
+        name: 'user',
+        wins: 0,
+        loses: 0
+    },
+    {
+        computer: 'user',
+        wins: 0,
+        loses: 0
+    },
+    {
+        ties: 0
     }
+];
 
-    return movimento;
-}
+jsTies.innerText = gameScore[2].ties;
+jsUserWins.innerText = gameScore[0].wins;
+jsUserLoses.innerText = gameScore[0].loses;
+jsComputerWins.innerText = gameScore[1].wins;
+jsComputerLoses.innerText = gameScore[1].loses;
 
-function jogo(movimentoJogador){
+function saveToStorage(){
+    localStorage.setItem('gameScore', JSON.stringify(gameScore));
+};
 
-    let resultado = '';
 
-    const movimento = movimentoComputador()
+function computerMove(){
 
-    if(movimentoJogador === 'pedra'){
+    const randomNumber = Math.floor(Math.random() * 5 + 1);
 
-         if(movimento === 'pedra'){
-
-        empates++;
-        resultado = ` <p>Deu empate! O computador escolheu <span class='moviComputador'>pedra</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    } else if(movimento === 'papel'){
-
-        perdas++;
-        resultado = ` <p>Você perdeu! O computador escolheu <span class='moviComputador'>papel</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-
-    } else if(movimento === 'tesoura'){
-
-        vitorias++;
-        resultado = ` <p>Você ganhou! O computador escolheu <span class='moviComputador'>tesoura</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    }
-
-    jsResultado.innerHTML = resultado;
-
-    } else if(movimentoJogador === 'papel'){
-
-        if(movimento === 'pedra'){
-
-        vitorias++;
-        resultado = ` <p>Você ganhou! O computador escolheu <span class='moviComputador'>pedra</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    } else if(movimento === 'papel'){
-
-        empates++;
-        resultado = ` <p>Deu empate! O computador escolheu <span class='moviComputador'>papel</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-
-    } else if(movimento === 'tesoura'){
-
-        perdas++;
-        resultado = ` <p>Você perdeu! O computador escolheu <span class='moviComputador'>tesoura</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    }
-
-    jsResultado.innerHTML = resultado;
-
-    } else{
-        if(movimento === 'pedra'){
-
-        perdas++;
-        resultado = ` <p>Você perdeu! O computador escolheu <span class='moviComputador'>pedra</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    } else if(movimento === 'papel'){
-
-        vitorias++;
-        resultado = ` <p>Você ganhou! O computador escolheu <span class='moviComputador'>papel</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-
-    } else if(movimento === 'tesoura'){
-
-        empates++;
-        resultado = ` <p>Deu empate! O computador escolheu <span class='moviComputador'>tesoura</span></p>
-            <p><span id="vitoria">Vitórias: </span>${vitorias} - <span id="perda">Perdas:</span> ${perdas} - <span id="empate">Empates:</span> ${empates}</p>
-        `;
-    }
-
-    jsResultado.innerHTML = resultado;
-
+    switch(randomNumber){
+        case 1:
+           return 'rock';
+        case 2:
+            return 'paper';
+        case 3:
+            return 'scissors';
+        case 4:
+           return 'lizard';
+        case 5:
+            return 'spock';
     }
 
 }
 
+function renderGameScore(userResult, computerResult){
+   
 
-jsPedra.addEventListener('click', ()=>{
-    jogo('pedra');
+    if(userResult === 'userWins' && computerResult === 'computerLoses'){
+
+        jsUserWins.innerText = gameScore[0].wins;
+        jsComputerLoses.innerText = gameScore[1].loses;
+
+    } else if (userResult === 'userLoses' && computerResult === 'computerWins'){
+
+        jsUserLoses.innerText = gameScore[0].loses;
+        jsComputerWins.innerText = gameScore[1].wins;
+         
+    } else {
+        jsTies.innerText = gameScore[2].ties;
+    }
+
+}
+
+function game(userMove, computerMove){
+
+
+    if(userMove === 'rock'){
+
+        if(computerMove === 'rock'){
+            gameScore[2].ties += 1;
+            renderGameScore()
+            saveToStorage();
+        } else if(computerMove === 'paper'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if ('scissors'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'lizard') {
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'spock'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } 
+        
+    } else if(userMove === 'paper'){
+
+        if(computerMove === 'rock'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if(computerMove === 'paper'){
+            gameScore[2].ties += 1;
+            renderGameScore();
+            saveToStorage();
+        } else if (computerMove === 'scissors') {
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if (computerMove === 'lizard'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if (computerMove === 'spock'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        }
+
+    } else if (userMove === 'scissors'){
+
+        if(computerMove === 'rock'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if(computerMove === 'paper'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'scissors') {
+            gameScore[2].ties += 1;
+            renderGameScore();
+            saveToStorage();
+        } else if (computerMove === 'lizard'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'spock'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        }
+
+    } else if (userMove === 'lizard'){
+
+        if(computerMove === 'rock'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if(computerMove === 'paper'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'scissors') {
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if (computerMove === 'lizard'){
+            gameScore[2].ties += 1;
+            renderGameScore();
+            saveToStorage();
+        } else if (computerMove === 'spock'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        }
+
+    } else if (userMove === 'spock'){
+
+        if(computerMove === 'rock'){
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if(computerMove === 'paper'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if (computerMove === 'scissors') {
+            gameScore[0].wins += 1;
+            gameScore[1].loses += 1;
+            renderGameScore('userWins', 'computerLoses');
+            saveToStorage();
+        } else if (computerMove === 'lizard'){
+            gameScore[0].loses += 1;
+            gameScore[1].wins += 1;
+            renderGameScore('userLoses', 'computerWins');
+            saveToStorage();
+        } else if (computerMove === 'spock'){
+            gameScore[2].ties += 1;
+            renderGameScore();
+            saveToStorage();
+        }
+
+    }
+}
+
+
+jsRock.addEventListener('click', ()=>{
+    const userMove = 'rock';
+    const actualComputerMove = computerMove();
+
+    game(userMove, actualComputerMove);
+
 });
+jsPaper.addEventListener('click', ()=>{
+    const userMove = 'paper';
+    const actualComputerMove = computerMove();
 
-jsPapel.addEventListener('click', ()=>{
-    jogo('papel');
+    game(userMove, actualComputerMove);
 });
+jsScissors.addEventListener('click', ()=>{
+    const userMove = 'scissors';
+    const actualComputerMove = computerMove();
 
-jsTesoura.addEventListener('click', ()=>{
-    jogo('tesoura');
+    game(userMove, actualComputerMove);
 });
+jsLizard.addEventListener('click', ()=>{
+    const userMove = 'lizard';
+    const actualComputerMove = computerMove();
 
+    game(userMove, actualComputerMove);
+});
+jsSpock.addEventListener('click', ()=>{
+    const userMove = 'spock';
+    const actualComputerMove = computerMove();
+
+    game(userMove, actualComputerMove);
+});
