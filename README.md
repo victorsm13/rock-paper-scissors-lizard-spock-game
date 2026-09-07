@@ -2,6 +2,8 @@
 
 A web-based version of the classic **Rock, Paper, Scissors** game inspired by **The Big Bang Theory** featuring two additional choices: Lizard and Spock.
 
+You can acess the live project here: https://victorsm13.github.io/rock-paper-scissors-lizard-spock-game/index.html
+
 ## 📖 About the Project
 
 This project allows the player to compete against the computer by choosing one of five possible moves. The computer generates a random move, and the game determines the winner according to the official rules of Rock, Paper, Scissors, Lizard & Spock.
